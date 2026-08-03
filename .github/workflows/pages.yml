@@ -14,9 +14,6 @@ jobs:
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # Prefer a repo secret PERSONAL token for pushing (create `ACTIONS_DEPLOY_TOKEN`)
-          personal_token: ${{ secrets.ACTIONS_DEPLOY_TOKEN }}
-          # Fallback to GITHUB_TOKEN if no PAT is provided
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           # keep CNAME from repository root if present
