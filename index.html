@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Digital Handyman LLC</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+.hero {
+    background: linear-gradient(135deg, #0891b2, #1d4ed8, #312e81);
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.section {
+    padding: 60px 20px;
+}
+
+.white {
+    background: white;
+    color: #1e293b;
+}
+
+.gray {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    background: white;
+    color: #1e293b;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+}
+
+.button {
+    display: inline-block;
+    background: white;
+    color: #1d4ed8;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+}
+
+.contact {
+    background: #0891b2;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.contact a {
+    color: white;
+    text-decoration: underline;
+}
+
+ul.features {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+}
+
+ul.features li {
+    margin-bottom: 12px;
+}
+
+ul.features li::before {
+    content: "✔";
+    margin-right: 10px;
+    color: #0891b2;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>The Digital Handyman LLC</h1>
+    <p>Modern technology support for homes, entrepreneurs, and small businesses.</p>
+    <a class="button" href="#contact">Schedule a consultation</a>
+</section>
+
+<section class="section white">
+    <div class="container">
+        <h2>Our Services</h2>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Digital Organization</h3>
+                <p>Organize files, photos, passwords, cloud storage, email accounts, and important digital records so everything is easy to find and maintain.</p>
+            </div>
+
+            <div class="card">
+                <h3>Computer Setup &amp; Support</h3>
+                <p>New computer setup, software installation, updates, performance tuning, and technical assistance.</p>
+            </div>
+
+            <div class="card">
+                <h3>Network &amp; Wi‑Fi Optimization</h3>
+                <p>Improve wireless coverage, reliability, device connectivity, and internet performance.</p>
+            </div>
+
+            <div class="card">
+                <h3>Device Troubleshooting</h3>
+                <p>Resolve issues with computers, tablets, printers, phones, and connected devices.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section gray">
+    <div class="container">
+        <h2>Why Choose The Digital Handyman?</h2>
+        <p>We provide friendly, dependable technology support with a focus on solutions that save time and reduce stress.</p>
+        <ul class="features">
+            <li>Practical help for home and small business technology needs</li>
+            <li>Clear communication and guided recommendations</li>
+            <li>Fast response and on-site or remote support options</li>
+            <li>Systems that are easier to use, maintain, and protect</li>
+        </ul>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <h2>Contact The Digital Handyman</h2>
+        <p>Ready to simplify your technology? Reach out today for a free consultation.</p>
+        <p><a href="mailto:info@thedigitalhandyman.com">info@thedigitalhandyman.com</a> | <a href="tel:+14855095">(48) 5095</a></p>
+    </div>
+</section>
+
+</body>
+</html>
