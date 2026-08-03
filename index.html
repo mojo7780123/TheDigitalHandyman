@@ -68,6 +68,30 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
 }
 
+.flash-text {
+    margin-top: 16px;
+    font-weight: 700;
+    color: #fef08a;
+    text-shadow: 0 0 10px rgba(254, 240, 138, 0.9);
+    animation: flash 1.2s infinite;
+}
+
+.flash-text a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+@keyframes flash {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.75;
+        transform: scale(1.02);
+    }
+}
+
 .form-embed {
     position: relative;
     width: 100%;
@@ -116,7 +140,7 @@ ul.features li::before {
     <h1>The Digital Handyman LLC</h1>
     <p>Modern technology support for homes, entrepreneurs, and small businesses.</p>
     <a class="button" href="#contact">Schedule a consultation</a>
-    <p>No issue is too small! Email at <a href="mailto:info@thedigitalhandymanllc.com">info@thedigitalhandymanllc.com</a> and we will get it fixed!</p>
+    <p class="flash-text">No issue is too small! Email me at <a href="mailto:info@thedigitalhandymanllc.com">info@thedigitalhandymanllc.com</a> and we will get it fixed!</p>
 </section>
 
 <section class="section white">
