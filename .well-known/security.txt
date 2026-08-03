@@ -1,0 +1,4 @@
+Contact: mailto:info@thedigitalhandymanllc.com
+Encryption: 
+Acknowledgements: Please send vulnerability reports to the contact above.
+Preferred-Languages: en
