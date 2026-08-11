@@ -326,6 +326,28 @@ body {
     text-decoration: underline;
 }
 
+.contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(0, 255, 148, 0.18), transparent 18%),
+                radial-gradient(circle at 80% 20%, rgba(52, 211, 153, 0.12), transparent 20%),
+                repeating-linear-gradient(0deg, rgba(0, 255, 70, 0.04), rgba(0, 255, 70, 0.04) 1px, transparent 1px, transparent 20px);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.contact::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(180deg, rgba(0,255,70,0.12) 0%, transparent 50%),
+                      linear-gradient(90deg, rgba(0,255,70,0.08) 0%, transparent 30%);
+    background-size: 100% 30px, 30px 100%;
+    opacity: 0.32;
+    pointer-events: none;
+}
+
 ul.features {
     list-style: none;
     padding: 0;
