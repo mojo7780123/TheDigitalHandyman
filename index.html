@@ -71,15 +71,24 @@ body {
 .attention {
     position: relative;
     animation: pulse-border 1.5s ease-in-out infinite;
-    box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+    border: 3px solid #1d4ed8;
+    background: #1d4ed8;
+    color: white;
+    box-shadow: 0 0 0 0 rgba(29,78,216,0.45);
+}
+
+.attention:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: white;
 }
 
 @keyframes pulse-border {
     0%, 100% {
-        box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+        box-shadow: 0 0 0 0 rgba(29,78,216,0.45);
     }
     50% {
-        box-shadow: 0 0 0 8px rgba(255,255,255,0.1);
+        box-shadow: 0 0 0 10px rgba(59,130,246,0.15);
     }
 }
 
