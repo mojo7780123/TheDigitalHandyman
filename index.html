@@ -68,6 +68,79 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
 }
 
+.hero {
+    position: relative;
+    background: radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.22), transparent 20%),
+                radial-gradient(circle at 85% 10%, rgba(56, 189, 248, 0.18), transparent 18%),
+                linear-gradient(135deg, #020812 18%, #071124 60%, #091a2e 100%);
+    text-align: center;
+    padding: 100px 20px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(0, 255, 148, 0.18), transparent 18%),
+                radial-gradient(circle at 80% 20%, rgba(52, 211, 153, 0.12), transparent 20%),
+                repeating-linear-gradient(0deg, rgba(0, 255, 70, 0.04), rgba(0, 255, 70, 0.04) 1px, transparent 1px, transparent 20px);
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(180deg, rgba(0,255,70,0.12) 0%, transparent 50%),
+                      linear-gradient(90deg, rgba(0,255,70,0.08) 0%, transparent 30%);
+    background-size: 100% 30px, 30px 100%;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.hero-graphics {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.floating-graphic {
+    position: absolute;
+    width: 82px;
+    height: 82px;
+    border-radius: 18px;
+    border: 1px solid rgba(56, 189, 248, 0.7);
+    background: rgba(10, 25, 40, 0.72);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7dd3fc;
+    font-size: 0.77rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+    animation: float-graphic 14s linear infinite;
+}
+
+.floating-graphic:nth-child(1) { top: 12%; left: 6%; animation-delay: 0s; }
+.floating-graphic:nth-child(2) { top: 22%; right: 8%; animation-delay: 2.2s; width: 64px; height: 64px; }
+.floating-graphic:nth-child(3) { top: 48%; left: 10%; animation-delay: 4.1s; width: 58px; height: 58px; }
+.floating-graphic:nth-child(4) { top: 35%; right: 24%; animation-delay: 6.5s; }
+.floating-graphic:nth-child(5) { bottom: 18%; left: 16%; animation-delay: 3.4s; width: 72px; height: 72px; }
+.floating-graphic:nth-child(6) { bottom: 10%; right: 12%; animation-delay: 5.7s; width: 60px; height: 60px; }
+
+@keyframes float-graphic {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(10px, -18px) rotate(4deg); }
+    50% { transform: translate(-12px, 12px) rotate(-3deg); }
+    75% { transform: translate(8px, 20px) rotate(2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
 .attention {
     position: relative;
     animation: attention-blink 1.5s ease-in-out infinite;
@@ -203,6 +276,14 @@ ul.features li::before {
 <body>
 
 <section class="hero">
+    <div class="hero-graphics">
+        <div class="floating-graphic">DATA</div>
+        <div class="floating-graphic">CODE</div>
+        <div class="floating-graphic">PIXEL</div>
+        <div class="floating-graphic">ARCHIVE</div>
+        <div class="floating-graphic">SECURE</div>
+        <div class="floating-graphic">SYNC</div>
+    </div>
     <h1 class="logo">The Digital Handyman LLC</h1>
     <p>Modern technology support for homes, entrepreneurs, and small businesses.</p>
     <a class="button attention inverse" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Open Service Request</a>
