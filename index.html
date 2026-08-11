@@ -70,7 +70,7 @@ body {
 
 .attention {
     position: relative;
-    animation: pulse-border 1.5s ease-in-out infinite;
+    animation: attention-blink 1.5s ease-in-out infinite;
     border: 3px solid #1d4ed8;
     background: #1d4ed8;
     color: white;
@@ -89,10 +89,49 @@ body {
     border-color: #f8fafc;
 }
 
+.attention:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: white;
+}
+
+@keyframes attention-blink {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59,130,246,0.35);
+        transform: translateY(0);
+    }
+    30%, 70% {
+        box-shadow: 0 0 0 12px rgba(59,130,246,0.18);
+        transform: translateY(-1px);
     }
     50% {
-        box-shadow: 0 0 0 10px rgba(59,130,246,0.15);
+        box-shadow: 0 0 0 4px rgba(59,130,246,0.25);
     }
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 3rem;
+    letter-spacing: 0.12em;
+    animation: digital-glow 2.5s ease-in-out infinite, flicker 4.5s linear infinite;
+    text-shadow: 0 0 12px rgba(255,255,255,0.65), 0 0 24px rgba(37,99,235,0.35), 0 0 36px rgba(59,130,246,0.25);
+}
+
+@keyframes digital-glow {
+    0%, 100% {
+        text-shadow: 0 0 12px rgba(255,255,255,0.65), 0 0 24px rgba(37,99,235,0.35), 0 0 36px rgba(59,130,246,0.25);
+        opacity: 1;
+    }
+    50% {
+        text-shadow: 0 0 18px rgba(255,255,255,0.9), 0 0 28px rgba(37,99,235,0.55), 0 0 44px rgba(59,130,246,0.45);
+        opacity: 0.96;
+    }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    5%, 7%, 15%, 20%, 30%, 55%, 70%, 95% { opacity: 0.85; }
+    10%, 25%, 60%, 90% { opacity: 1; }
 }
 
 .flash-text {
@@ -164,7 +203,7 @@ ul.features li::before {
 <body>
 
 <section class="hero">
-    <h1>The Digital Handyman LLC</h1>
+    <h1 class="logo">The Digital Handyman LLC</h1>
     <p>Modern technology support for homes, entrepreneurs, and small businesses.</p>
     <a class="button attention inverse" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Open Service Request</a>
     <p style="margin-top: 16px;">
