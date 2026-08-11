@@ -104,26 +104,76 @@ body {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    z-index: 0;
+}
+
+.hero > *:not(.hero-graphics) {
+    position: relative;
+    z-index: 2;
 }
 
 .floating-graphic {
     position: absolute;
-    width: 82px;
-    height: 82px;
+    width: 112px;
+    height: 132px;
     border-radius: 18px;
-    border: 1px solid rgba(56, 189, 248, 0.7);
-    background: rgba(10, 25, 40, 0.72);
-    box-shadow: 0 0 40px rgba(56, 189, 248, 0.16);
+    border: 2px solid rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #7dd3fc;
-    font-size: 0.77rem;
-    font-weight: 800;
+    color: #0f172a;
+    font-size: 0.78rem;
+    font-weight: 900;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    backdrop-filter: blur(6px);
-    animation: float-graphic 14s linear infinite;
+    animation: float-graphic 18s linear infinite;
+    transform-origin: center;
+}
+
+.floating-graphic::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 58%);
+    border-radius: 16px;
+    pointer-events: none;
+}
+
+.floating-graphic::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    width: 96px;
+    height: 20px;
+    background: rgba(15, 23, 42, 0.08);
+    border-radius: 6px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.floating-graphic span {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 720px) {
+    .hero {
+        padding: 80px 18px;
+    }
+    .floating-graphic {
+        width: 84px;
+        height: 104px;
+        font-size: 0.65rem;
+        border-radius: 14px;
+    }
+    .floating-graphic:nth-child(1) { top: 8%; left: 4%; }
+    .floating-graphic:nth-child(2) { top: 22%; right: 4%; }
+    .floating-graphic:nth-child(3) { top: 40%; left: 8%; }
+    .floating-graphic:nth-child(4) { top: 34%; right: 16%; }
+    .floating-graphic:nth-child(5) { bottom: 18%; left: 12%; }
+    .floating-graphic:nth-child(6) { bottom: 6%; right: 10%; }
 }
 
 .floating-graphic:nth-child(1) { top: 12%; left: 6%; animation-delay: 0s; }
@@ -276,19 +326,16 @@ ul.features li::before {
 
 <section class="hero">
     <div class="hero-graphics">
-        <div class="floating-graphic">DATA</div>
-        <div class="floating-graphic">CODE</div>
-        <div class="floating-graphic">PIXEL</div>
-        <div class="floating-graphic">ARCHIVE</div>
-        <div class="floating-graphic">SECURE</div>
-        <div class="floating-graphic">SYNC</div>
+        <div class="floating-graphic"><span>DATA</span></div>
+        <div class="floating-graphic"><span>CODE</span></div>
+        <div class="floating-graphic"><span>PHOTOS</span></div>
+        <div class="floating-graphic"><span>ARCHIVE</span></div>
+        <div class="floating-graphic"><span>SECURE</span></div>
+        <div class="floating-graphic"><span>SYNC</span></div>
     </div>
     <h1 class="logo">The Digital Handyman LLC</h1>
     <p>Modern technology support for homes, entrepreneurs, and small businesses.</p>
     <a class="button attention inverse" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Open Service Request</a>
-    <p style="margin-top: 16px;">
-        <button id="matrix-sound-toggle" class="button inverse" type="button">Play Matrix Sound</button>
-    </p>
     <p style="margin-top: 16px;">
         <a href="about.html" style="color: white; text-decoration: underline; font-weight: bold;">Learn more about me</a>
     </p>
@@ -406,73 +453,6 @@ ul.features li::before {
     </div>
 </section>
 
-<script>
-(function(){
-    const button = document.getElementById('matrix-sound-toggle');
-    let audioCtx, isPlaying = false, nextTimer = null;
-
-    function playMatrixTone(){
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const now = audioCtx.currentTime;
-
-        const mainOsc = audioCtx.createOscillator();
-        const mainGain = audioCtx.createGain();
-        mainOsc.type = 'sine';
-        mainOsc.frequency.value = 118;
-        mainGain.gain.value = 0.032;
-        mainOsc.connect(mainGain).connect(audioCtx.destination);
-        mainOsc.start(now);
-        mainOsc.stop(now + 2.2);
-
-        const chimeOsc = audioCtx.createOscillator();
-        const chimeGain = audioCtx.createGain();
-        chimeOsc.type = 'triangle';
-        chimeOsc.frequency.value = 720;
-        chimeGain.gain.setValueAtTime(0, now);
-        chimeGain.gain.linearRampToValueAtTime(0.035, now + 0.02);
-        chimeGain.gain.exponentialRampToValueAtTime(0.001, now + 1.0);
-        chimeOsc.connect(chimeGain).connect(audioCtx.destination);
-        chimeOsc.start(now + 0.4);
-        chimeOsc.stop(now + 1.1);
-
-        const buffer = audioCtx.createBuffer(1, audioCtx.sampleRate * 0.25, audioCtx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < data.length; i++) {
-            data[i] = (Math.random() * 2 - 1) * 0.16 * (1 - i / data.length);
-        }
-        const noise = audioCtx.createBufferSource();
-        noise.buffer = buffer;
-        const noiseGain = audioCtx.createGain();
-        noiseGain.gain.setValueAtTime(0.02, now);
-        noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.24);
-        noise.connect(noiseGain).connect(audioCtx.destination);
-        noise.start(now);
-        noise.stop(now + 0.24);
-
-        nextTimer = setTimeout(() => {
-            if (isPlaying) playMatrixTone();
-        }, 1800);
-    }
-
-    button.addEventListener('click', () => {
-        if (!isPlaying) {
-            isPlaying = true;
-            button.textContent = 'Stop Matrix Sound';
-            if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-            playMatrixTone();
-        } else {
-            isPlaying = false;
-            button.textContent = 'Play Matrix Sound';
-            if (nextTimer) {
-                clearTimeout(nextTimer);
-                nextTimer = null;
-            }
-        }
-    });
-})();
-</script>
 
 </body>
 </html>
