@@ -68,6 +68,21 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
 }
 
+.attention {
+    position: relative;
+    animation: pulse-border 1.5s ease-in-out infinite;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+}
+
+@keyframes pulse-border {
+    0%, 100% {
+        box-shadow: 0 0 0 2px rgba(255,255,255,0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(255,255,255,0.1);
+    }
+}
+
 .flash-text {
     margin-top: 16px;
     font-weight: 700;
@@ -244,7 +259,7 @@ ul.features li::before {
         <h2>Request Service</h2>
         <p>Fill out the form and we’ll get back to you to schedule your service and discuss your needs.</p>
         <p>
-            <a class="button" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Open Service Request Form</a>
+            <a class="button attention" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Open Service Request Form</a>
         </p>
     </div>
 </section>
