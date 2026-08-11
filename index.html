@@ -120,9 +120,9 @@ body {
     border: 12px solid rgba(255,255,255,0.95);
     background: #f8fafc;
     box-shadow: 0 22px 45px rgba(0, 0, 0, 0.28);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    display: block;
+    align-items: initial;
+    justify-content: initial;
     color: #0f172a;
     font-size: 0.68rem;
     font-weight: 800;
@@ -148,18 +148,24 @@ body {
     content: "";
     position: absolute;
     left: 14px;
+    right: 14px;
     bottom: 12px;
-    width: 84px;
-    height: 18px;
+    height: 20px;
     background: rgba(15, 23, 42, 0.08);
     border-radius: 4px;
     border: 1px solid rgba(15, 23, 42, 0.12);
 }
 
 .floating-graphic span {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 8px;
+    position: absolute;
+    bottom: 10px;
+    left: 14px;
+    right: 14px;
+    text-align: center;
+    z-index: 2;
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1;
 }
 
 @media (max-width: 720px) {
@@ -173,7 +179,8 @@ body {
         border-radius: 14px;
     }
     .hero-graphics {
-        display: none;
+        transform: scale(0.78);
+        opacity: 0.55;
     }
     .floating-graphic:nth-child(1) { top: 8%; left: 4%; }
     .floating-graphic:nth-child(2) { top: 22%; right: 4%; }
@@ -189,6 +196,10 @@ body {
 .floating-graphic:nth-child(4) { top: 35%; right: 24%; animation-delay: 6.5s; }
 .floating-graphic:nth-child(5) { bottom: 18%; left: 16%; animation-delay: 3.4s; width: 72px; height: 72px; }
 .floating-graphic:nth-child(6) { bottom: 10%; right: 12%; animation-delay: 5.7s; width: 60px; height: 60px; }
+
+/* Make the PHOTOS card a bit wider so the word fits better */
+.floating-graphic:nth-child(1) { width: 132px; height: 152px; }
+.floating-graphic:nth-child(1) span { font-size: 0.78rem; }
 
 @keyframes float-graphic {
     0% { transform: translate(0, 0) rotate(0deg); }
