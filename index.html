@@ -77,15 +77,18 @@ body {
     box-shadow: 0 0 0 0 rgba(29,78,216,0.45);
 }
 
-.attention:hover {
-    background: #2563eb;
-    border-color: #2563eb;
-    color: white;
+.attention.inverse {
+    background: white;
+    color: #1d4ed8;
+    border-color: white;
 }
 
-@keyframes pulse-border {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(29,78,216,0.45);
+.attention.inverse:hover {
+    background: #f8fafc;
+    color: #1d4ed8;
+    border-color: #f8fafc;
+}
+
     }
     50% {
         box-shadow: 0 0 0 10px rgba(59,130,246,0.15);
@@ -163,7 +166,7 @@ ul.features li::before {
 <section class="hero">
     <h1>The Digital Handyman LLC</h1>
     <p>Modern technology support for homes, entrepreneurs, and small businesses.</p>
-    <a class="button attention" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Open Service Request</a>
+    <a class="button attention inverse" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Open Service Request</a>
     <p style="margin-top: 16px;">
         <a href="about.html" style="color: white; text-decoration: underline; font-weight: bold;">Learn more about me</a>
     </p>
