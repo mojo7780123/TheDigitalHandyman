@@ -287,6 +287,9 @@ ul.features li::before {
     <p>Modern technology support for homes, entrepreneurs, and small businesses.</p>
     <a class="button attention inverse" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Open Service Request</a>
     <p style="margin-top: 16px;">
+        <button id="matrix-sound-toggle" class="button inverse" type="button">Play Matrix Sound</button>
+    </p>
+    <p style="margin-top: 16px;">
         <a href="about.html" style="color: white; text-decoration: underline; font-weight: bold;">Learn more about me</a>
     </p>
     <p class="flash-text">No issue is too small! Email me at <a href="mailto:info@thedigitalhandymanllc.com">info@thedigitalhandymanllc.com</a> and we will get it fixed!</p>
@@ -402,6 +405,74 @@ ul.features li::before {
         <p><a href="mailto:info@thedigitalhandymanllc.com">info@thedigitalhandymanllc.com</a> | <a href="tel:+13037485095">(303) 748-5095</a></p>
     </div>
 </section>
+
+<script>
+(function(){
+    const button = document.getElementById('matrix-sound-toggle');
+    let audioCtx, isPlaying = false, nextTimer = null;
+
+    function playMatrixTone(){
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const now = audioCtx.currentTime;
+
+        const mainOsc = audioCtx.createOscillator();
+        const mainGain = audioCtx.createGain();
+        mainOsc.type = 'sine';
+        mainOsc.frequency.value = 118;
+        mainGain.gain.value = 0.032;
+        mainOsc.connect(mainGain).connect(audioCtx.destination);
+        mainOsc.start(now);
+        mainOsc.stop(now + 2.2);
+
+        const chimeOsc = audioCtx.createOscillator();
+        const chimeGain = audioCtx.createGain();
+        chimeOsc.type = 'triangle';
+        chimeOsc.frequency.value = 720;
+        chimeGain.gain.setValueAtTime(0, now);
+        chimeGain.gain.linearRampToValueAtTime(0.035, now + 0.02);
+        chimeGain.gain.exponentialRampToValueAtTime(0.001, now + 1.0);
+        chimeOsc.connect(chimeGain).connect(audioCtx.destination);
+        chimeOsc.start(now + 0.4);
+        chimeOsc.stop(now + 1.1);
+
+        const buffer = audioCtx.createBuffer(1, audioCtx.sampleRate * 0.25, audioCtx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < data.length; i++) {
+            data[i] = (Math.random() * 2 - 1) * 0.16 * (1 - i / data.length);
+        }
+        const noise = audioCtx.createBufferSource();
+        noise.buffer = buffer;
+        const noiseGain = audioCtx.createGain();
+        noiseGain.gain.setValueAtTime(0.02, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.24);
+        noise.connect(noiseGain).connect(audioCtx.destination);
+        noise.start(now);
+        noise.stop(now + 0.24);
+
+        nextTimer = setTimeout(() => {
+            if (isPlaying) playMatrixTone();
+        }, 1800);
+    }
+
+    button.addEventListener('click', () => {
+        if (!isPlaying) {
+            isPlaying = true;
+            button.textContent = 'Stop Matrix Sound';
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            playMatrixTone();
+        } else {
+            isPlaying = false;
+            button.textContent = 'Play Matrix Sound';
+            if (nextTimer) {
+                clearTimeout(nextTimer);
+                nextTimer = null;
+            }
+        }
+    });
+})();
+</script>
 
 </body>
 </html>
