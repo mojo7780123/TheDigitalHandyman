@@ -69,6 +69,25 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
 }
 
+.pricing-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #ef4444;
+    font-size: 0.9em;
+}
+
+.discount-price {
+    color: #059669;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
 .hero {
     position: relative;
     background: radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.22), transparent 20%),
@@ -504,7 +523,12 @@ ul.features li::before {
         <div class="grid">
             <div class="card">
                 <h3>Essential Digital Organization</h3>
-                <p><strong>$299</strong></p>
+                <p>
+                    <div class="pricing-wrapper">
+                        <span class="original-price"><strong>$299</strong></span>
+                        <span class="discount-price"><strong>$159.00</strong></span>
+                    </div>
+                </p>
                 <p><strong>Best For:</strong> Individuals</p>
                 <ul class="features">
                     <li>Digital assessment</li>
@@ -516,7 +540,12 @@ ul.features li::before {
             </div>
             <div class="card">
                 <h3>Complete Digital Organization</h3>
-                <p><strong>$629</strong></p>
+                <p>
+                    <div class="pricing-wrapper">
+                        <span class="original-price"><strong>$629</strong></span>
+                        <span class="discount-price"><strong>$399.99</strong></span>
+                    </div>
+                </p>
                 <p><strong>Best For:</strong> Families &amp; Professionals</p>
                 <ul class="features">
                     <li>Digital assessment</li>
