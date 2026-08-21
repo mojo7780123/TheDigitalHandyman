@@ -73,7 +73,9 @@ body {
     position: relative;
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
     margin-bottom: 18px;
+    min-height: 54px;
 }
 
 .menu-toggle {
@@ -89,9 +91,7 @@ body {
     cursor: pointer;
     padding: 12px 10px;
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     z-index: 2;
 }
 
@@ -105,8 +105,8 @@ body {
 
 .service-menu {
     position: absolute;
-    top: 70px;
-    left: 0;
+    top: 0;
+    left: 70px;
     z-index: 3;
     display: flex;
     flex-direction: column;
