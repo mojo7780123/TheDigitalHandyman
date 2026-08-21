@@ -70,6 +70,7 @@ body {
 }
 
 .menu-toggle-wrap {
+    position: relative;
     display: flex;
     justify-content: flex-start;
     margin-bottom: 18px;
@@ -88,6 +89,10 @@ body {
     cursor: pointer;
     padding: 12px 10px;
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
 .menu-toggle span {
@@ -99,10 +104,19 @@ body {
 }
 
 .service-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 3;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
-    margin-bottom: 24px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
 }
 
 .service-menu button {
@@ -130,6 +144,7 @@ body {
     border-radius: 18px;
     padding: 28px;
     color: #1e293b;
+    margin-top: 48px;
 }
 
 .detail {
@@ -600,16 +615,16 @@ ul.features li::before {
                 <span></span>
                 <span></span>
             </button>
-        </div>
 
-        <div id="service-menu" class="service-menu" hidden>
-            <button type="button" class="menu-option active" data-target="services">My services</button>
-            <button type="button" class="menu-option" data-target="packages">Digital Organization Packages</button>
-            <button type="button" class="menu-option" data-target="about">About Me</button>
+            <div id="service-menu" class="service-menu" hidden>
+                <button type="button" class="menu-option" data-target="services">My services</button>
+                <button type="button" class="menu-option" data-target="packages">Digital Organization Packages</button>
+                <button type="button" class="menu-option" data-target="about">About Me</button>
+            </div>
         </div>
 
         <div class="detail-panel">
-            <div class="detail active" data-panel="services">
+            <div class="detail" data-panel="services">
                 <h3>My services</h3>
                 <div class="grid">
                     <div class="card">
@@ -754,6 +769,9 @@ menuOptions.forEach((button) => {
         menuToggle.setAttribute('aria-expanded', 'false');
     });
 });
+
+menuOptions.forEach((button) => button.classList.remove('active'));
+detailPanels.forEach((panel) => panel.classList.remove('active'));
 </script>
 </body>
 </html>
