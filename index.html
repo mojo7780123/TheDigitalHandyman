@@ -69,6 +69,93 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
 }
 
+.menu-toggle-wrap {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 18px;
+}
+
+.menu-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 54px;
+    height: 54px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: #f8fafc;
+    cursor: pointer;
+    padding: 12px 10px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #0f172a;
+    border-radius: 999px;
+}
+
+.service-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.service-menu button {
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #1e293b;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.service-menu button.active {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    color: white;
+    box-shadow: 0 8px 20px rgba(29, 78, 216, 0.2);
+}
+
+.detail-panel {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 28px;
+    color: #1e293b;
+}
+
+.detail {
+    display: none;
+}
+
+.detail.active {
+    display: block;
+}
+
+.detail h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.detail p,
+.detail li {
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+.detail .grid {
+    margin-top: 20px;
+}
+
 .pricing-wrapper {
     display: flex;
     align-items: center;
@@ -507,102 +594,107 @@ ul.features li::before {
 
 <section class="section white">
     <div class="container">
-        <h2>Our Services</h2>
+        <div class="menu-toggle-wrap">
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="service-menu" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
 
-        <div class="grid">
-            <div class="card">
-                <h3>Digital Organization</h3>
-                <p>Organize files, photos, passwords, cloud storage, email accounts, and important digital records so everything is easy to find and maintain.</p>
+        <div id="service-menu" class="service-menu" hidden>
+            <button type="button" class="menu-option active" data-target="services">My services</button>
+            <button type="button" class="menu-option" data-target="packages">Digital Organization Packages</button>
+            <button type="button" class="menu-option" data-target="about">About Me</button>
+        </div>
+
+        <div class="detail-panel">
+            <div class="detail active" data-panel="services">
+                <h3>My services</h3>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Digital Organization</h3>
+                        <p>Organize files, photos, passwords, cloud storage, email accounts, and important digital records so everything is easy to find and maintain.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Computer Setup &amp; Support</h3>
+                        <p>New computer setup, software installation, updates, performance tuning, and technical assistance.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Network &amp; Wi‑Fi Optimization</h3>
+                        <p>Improve wireless coverage, reliability, device connectivity, and internet performance.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Device Troubleshooting</h3>
+                        <p>Resolve issues with computers, tablets, printers, phones, and connected devices.</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>Computer Setup &amp; Support</h3>
-                <p>New computer setup, software installation, updates, performance tuning, and technical assistance.</p>
+            <div class="detail" data-panel="packages">
+                <h3>Digital Organization Packages</h3>
+                <p>Choose the right archive and organization plan for your digital life.</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Essential Digital Organization</h3>
+                        <span class="price-drop-badge">Price Drop</span>
+                        <div class="pricing-wrapper">
+                            <span class="original-price"><strong>$299</strong></span>
+                            <span class="discount-price"><strong>$159.00</strong></span>
+                        </div>
+                        <p><strong>Best For:</strong> Individuals</p>
+                        <ul class="features">
+                            <li>Digital assessment</li>
+                            <li>Photo organization for up to 5,000 photos</li>
+                            <li>Password organization setup</li>
+                            <li>Backup strategy review</li>
+                        </ul>
+                        <a class="button" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Get Started</a>
+                    </div>
+                    <div class="card">
+                        <h3>Complete Digital Organization</h3>
+                        <span class="price-drop-badge">Price Drop</span>
+                        <div class="pricing-wrapper">
+                            <span class="original-price"><strong>$629</strong></span>
+                            <span class="discount-price"><strong>$399.99</strong></span>
+                        </div>
+                        <p><strong>Best For:</strong> Families &amp; Professionals</p>
+                        <ul class="features">
+                            <li>Digital assessment</li>
+                            <li>Photo organization for 5,000–20,000 photos</li>
+                            <li>Password organization setup</li>
+                            <li>Backup strategy review</li>
+                            <li>Backup setup &amp; verification</li>
+                            <li>6 months support included</li>
+                        </ul>
+                        <a class="button" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Most Popular</a>
+                    </div>
+                    <div class="card">
+                        <h3>Legacy &amp; Family Archive</h3>
+                        <p><strong>$899</strong></p>
+                        <p><strong>Best For:</strong> Large Archives &amp; Legacy Planning</p>
+                        <ul class="features">
+                            <li>Digital assessment</li>
+                            <li>Photo organization for 20,000+ photos</li>
+                            <li>Password organization setup</li>
+                            <li>Backup strategy review</li>
+                            <li>Backup setup &amp; verification</li>
+                            <li>Priority service</li>
+                            <li>Family archive planning session</li>
+                            <li>Annual digital health review</li>
+                            <li>12 months premium support included</li>
+                        </ul>
+                        <a class="button" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Premium Service</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>Network &amp; Wi‑Fi Optimization</h3>
-                <p>Improve wireless coverage, reliability, device connectivity, and internet performance.</p>
-            </div>
-
-            <div class="card">
-                <h3>Device Troubleshooting</h3>
-                <p>Resolve issues with computers, tablets, printers, phones, and connected devices.</p>
+            <div class="detail" data-panel="about">
+                <h3>About Me</h3>
+                <p>I’m a technology support specialist focused on helping people simplify their digital lives without the overwhelm. Whether it’s organizing files, setting up devices, or making home and business systems easier to manage, the goal is always practical, friendly support that makes life easier.</p>
+                <p>My work is built around clear communication, thoughtful solutions, and dependable follow-through—so you can get back to using your technology with confidence.</p>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="section gray" id="packages">
-    <div class="container">
-        <h2>Digital Organization Packages</h2>
-        <p>Choose the right archive and organization plan for your digital life.</p>
-        <div class="grid">
-            <div class="card">
-                <h3>Essential Digital Organization</h3>
-                <span class="price-drop-badge">Price Drop</span>
-                <div class="pricing-wrapper">
-                    <span class="original-price"><strong>$299</strong></span>
-                    <span class="discount-price"><strong>$159.00</strong></span>
-                </div>
-                <p><strong>Best For:</strong> Individuals</p>
-                <ul class="features">
-                    <li>Digital assessment</li>
-                    <li>Photo organization for up to 5,000 photos</li>
-                    <li>Password organization setup</li>
-                    <li>Backup strategy review</li>
-                </ul>
-                <a class="button" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Get Started</a>
-            </div>
-            <div class="card">
-                <h3>Complete Digital Organization</h3>
-                <span class="price-drop-badge">Price Drop</span>
-                <div class="pricing-wrapper">
-                    <span class="original-price"><strong>$629</strong></span>
-                    <span class="discount-price"><strong>$399.99</strong></span>
-                </div>
-                <p><strong>Best For:</strong> Families &amp; Professionals</p>
-                <ul class="features">
-                    <li>Digital assessment</li>
-                    <li>Photo organization for 5,000–20,000 photos</li>
-                    <li>Password organization setup</li>
-                    <li>Backup strategy review</li>
-                    <li>Backup setup &amp; verification</li>
-                    <li>6 months support included</li>
-                </ul>
-                <a class="button" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Most Popular</a>
-            </div>
-            <div class="card">
-                <h3>Legacy &amp; Family Archive</h3>
-                <p><strong>$899</strong></p>
-                <p><strong>Best For:</strong> Large Archives &amp; Legacy Planning</p>
-                <ul class="features">
-                    <li>Digital assessment</li>
-                    <li>Photo organization for 20,000+ photos</li>
-                    <li>Password organization setup</li>
-                    <li>Backup strategy review</li>
-                    <li>Backup setup &amp; verification</li>
-                    <li>Priority service</li>
-                    <li>Family archive planning session</li>
-                    <li>Annual digital health review</li>
-                    <li>12 months premium support included</li>
-                </ul>
-                <a class="button" href="https://forms.gle/7ZZQUn412zYqayJs8" target="_blank" rel="noopener noreferrer">Premium Service</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section gray">
-    <div class="container">
-        <h2>Why Choose The Digital Handyman?</h2>
-        <p>We provide friendly, dependable technology support with a focus on solutions that save time and reduce stress.</p>
-        <ul class="features">
-            <li>Practical help for home and small business technology needs</li>
-            <li>Clear communication and guided recommendations</li>
-            <li>Fast response and on-site or remote support options</li>
-            <li>Systems that are easier to use, maintain, and protect</li>
-        </ul>
     </div>
 </section>
 
@@ -634,5 +726,34 @@ ul.features li::before {
 </section>
 
 
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const serviceMenu = document.getElementById('service-menu');
+const menuOptions = document.querySelectorAll('.menu-option');
+const detailPanels = document.querySelectorAll('.detail');
+
+menuToggle.addEventListener('click', () => {
+    const isHidden = serviceMenu.hasAttribute('hidden');
+    if (isHidden) {
+        serviceMenu.removeAttribute('hidden');
+        menuToggle.setAttribute('aria-expanded', 'true');
+    } else {
+        serviceMenu.setAttribute('hidden', 'hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+    }
+});
+
+menuOptions.forEach((button) => {
+    button.addEventListener('click', () => {
+        const target = button.dataset.target;
+
+        menuOptions.forEach((option) => option.classList.toggle('active', option === button));
+        detailPanels.forEach((panel) => panel.classList.toggle('active', panel.dataset.panel === target));
+
+        serviceMenu.setAttribute('hidden', 'hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+    });
+});
+</script>
 </body>
 </html>
